@@ -36,8 +36,6 @@ class PolicyIteration:
         # state, action에 대한 table 생성
         self.policy_table = np.ones([env.observation_space.n, env.action_space.n]) / env.action_space.n
 
-        self.success_states = []
-
     def policy_evaluation(self, iter_num, discount_factor = 0.99):
         for episode in range(iter_num):
             next_value_table = np.zeros(self.env.observation_space.n)
@@ -119,7 +117,7 @@ class PolicyIteration:
         
         for row, line in enumerate(board):
             for col, cell in enumerate(line):
-                if cell == ' ' or cell == 'R' or cell == 'Y' or cell == 'B' or cell == 'G':
+                if cell == ' ':
                     temp_state = self.env.encode(row - 1, col // 2, passenger_location, destination)
                     policy = self.get_policy(temp_state)
                     policy_mask = []

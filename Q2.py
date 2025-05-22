@@ -8,11 +8,10 @@ env = env.unwrapped
 
 # Init
 state, info = env.reset()
-iterations = 2
-episodes = 500
-discount_factor = 0.90
+iterations = 1
+episodes = 100
+discount_factor = 0.99
 policyIteration = PolicyIteration(env)
-time.sleep(2)
 
 # 반복 시작
 for iteration in range(iterations):
