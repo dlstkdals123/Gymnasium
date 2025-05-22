@@ -38,9 +38,12 @@ class PolicyIteration:
         # state, action에 대한 table 생성
         self.policy_table = np.ones([env.observation_space.n, env.action_space.n]) / env.action_space.n
 
-    def policy_evaluation(self, iter_num, discount_factor=0.99):
-        # 주어진 횟수만큼 policy evaluation 수행
-        for _ in range(iter_num):
+    def policy_evaluation(self, delta=0.00001, discount_factor=0.99):
+        # max 변화량 < delta 일 때까지 policy evaluation 수행
+        total_episode = 0
+
+        while True:
+            total_episode += 1
             next_value_table = np.zeros_like(self.value_table)
 
             for state in range(self.env.observation_space.n):
@@ -56,7 +59,13 @@ class PolicyIteration:
                     value += policy[action] * (reward + discount_factor * self.get_value(next_state))
                 next_value_table[state] = value
 
+            # np 배열 연산으로 변화량 계산
+            max_diff = np.max(np.abs(next_value_table - self.value_table))
             self.value_table = next_value_table
+
+            if max_diff < delta:
+                print(f'total episode: {total_episode}')
+                break
 
     def policy_improvement(self, discount_factor=0.99):
         # 모든 state에 대해 policy를 개선

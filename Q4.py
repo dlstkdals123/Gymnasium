@@ -1,5 +1,5 @@
 import gymnasium as gym
-from policy_evaluation import PolicyIteration
+from Q4_policy_evaluation import PolicyIteration
 
 env = gym.make("Taxi-v3", render_mode="human")
 env = env.unwrapped
@@ -7,7 +7,8 @@ env = env.unwrapped
 # Init
 state, info = env.reset(seed = 1)
 iterations = 30
-episodes = 200
+# episodes = 10
+delta = 0.00001
 discount_factor = 0.99
 policyIteration = PolicyIteration(env)
 
@@ -15,7 +16,7 @@ policyIteration = PolicyIteration(env)
 for iteration in range(iterations):
     env.render()
 
-    policyIteration.policy_evaluation(iter_num = episodes, discount_factor=discount_factor)
+    policyIteration.policy_evaluation(delta = delta, discount_factor=discount_factor)
     policyIteration.policy_improvement(discount_factor=discount_factor)
 
     policyIteration.print_value(state)

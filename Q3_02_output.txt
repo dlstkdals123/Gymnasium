@@ -1,0 +1,73 @@
+value: -3.9999999999999996
+policy: {down: 0.25 up: 0.25 right: 0.25 left: 0.25 }
+action: right
+--------------------
+value: -4.959999999999999
+policy: {down: 1.0 }
+action: down
+--------------------
+value: -4.44025
+policy: {down: 0.5 left: 0.5 }
+action: left
+--------------------
+value: -5.3958474999999995
+policy: {down: 0.25 up: 0.25 right: 0.25 left: 0.25 }
+action: right
+--------------------
+value: -6.3418890249999995
+policy: {down: 0.25 up: 0.25 right: 0.25 left: 0.25 }
+action: left
+--------------------
+value: -7.278470134749998
+policy: {left: 1.0 }
+action: left
+--------------------
+value: -8.205685433402497
+policy: {down: 0.25 up: 0.25 right: 0.25 left: 0.25 }
+action: right
+--------------------
+value: -9.123628579068471
+policy: {down: 0.25 up: 0.25 right: 0.25 left: 0.25 }
+action: down
+--------------------
+value: -10.032392293277786
+policy: {left: 1.0 }
+action: left
+--------------------
+value: 10.729363331350415
+policy: {pickup: 1.0 }
+action: pickup
+--------------------
+value: 11.847841748838803
+policy: {up: 1.0 }
+action: up
+--------------------
+value: 12.977617928120003
+policy: {up: 1.0 }
+action: up
+--------------------
+value: 14.118805988000002
+policy: {left: 1.0 }
+action: left
+--------------------
+value: 15.271521200000002
+policy: {left: 1.0 }
+action: left
+--------------------
+value: 16.43588
+policy: {up: 0.5 left: 0.5 }
+action: up
+--------------------
+value: 17.612000000000002
+policy: {up: 0.5 left: 0.5 }
+action: left
+--------------------
+value: 18.8
+policy: {up: 1.0 }
+action: up
+--------------------
+value: 20.0
+policy: {dropoff: 1.0 }
+action: dropoff
+Finish
+total iterations: 17

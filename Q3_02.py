@@ -7,7 +7,7 @@ env = env.unwrapped
 # Init
 state, info = env.reset(seed = 1)
 iterations = 30
-episodes = 200
+episodes = 1
 discount_factor = 0.99
 policyIteration = PolicyIteration(env)
 
