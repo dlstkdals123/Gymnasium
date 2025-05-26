@@ -10,13 +10,14 @@ iterations = 0
 episodes = 0
 max_action_numbers = 30
 discount_factor = 0.99
+delta = 0.00001
 policyIteration = PolicyIteration(env)
 
 # 반복 시작
 policy_stable = False
 while not policy_stable:
     iterations += 1
-    policyIteration.Q4_policy_evaluation(delta = 0.00001, discount_factor=discount_factor)
+    policyIteration.Q4_policy_evaluation(delta = delta, discount_factor=discount_factor)
     policy_stable = policyIteration.Q4_policy_improvement(discount_factor=discount_factor)
 
 print("===================")

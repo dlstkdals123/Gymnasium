@@ -1,9 +1,9 @@
+total episodes: 138
+total episodes: 58
+total episodes: 66
+total episodes: 29
+total episodes: 10
 total episodes: 1
-total episodes: 3
-total episodes: 4
-total episodes: 11
-total episodes: 11
-total episodes: 11
 ===================
 Total iterations: 6
 ===================
@@ -27,22 +27,22 @@ after pickup:
 +---------+
 
 action number: 1
-value: 18.113879511045976
+value: 7.440590511045976
 policy: {right: 1.0 }
 action: right
 --------------------
 action number: 2
-value: 19.30694900105654
+value: 8.52584900105654
 policy: {down: 1.0 }
 action: down
 --------------------
 action number: 3
-value: 20.51206969803691
+value: 9.62206969803691
 policy: {down: 1.0 }
 action: down
 --------------------
 action number: 4
-value: 21.729363331350413
+value: 10.729363331350415
 policy: {pickup: 1.0 }
 action: pickup
 --------------------

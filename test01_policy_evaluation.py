@@ -81,7 +81,6 @@ class PolicyIteration:
             self.policy_table[state] = policy
 
     def Q4_policy_evaluation(self, delta=0.00001, discount_factor=0.99):
-        value_stable = True
         # max 변화량 < delta 일 때까지 policy evaluation 수행
         total_episode = 0
 
@@ -98,13 +97,7 @@ class PolicyIteration:
                 policy = self.get_policy(state)
                 # 각 action에 대해 기대값 계산
                 for action in range(self.env.action_space.n):
-                    _, next_state, reward, _ = self.env.P[state][action][0]
-
-                    current_row, current_col, current_passenger_position, _ = self.env.decode(state)
-                    next_row, next_col, next_passenger_position, _ = self.env.decode(next_state)
-                    if current_passenger_position != 4 and next_passenger_position == 4:
-                        print("pickup")
-                        reward = 10
+                    next_state, reward = self.get_result(state, action)
 
                     value += policy[action] * (reward + discount_factor * self.get_value(next_state))
                 next_value_table[state] = value
@@ -128,7 +121,8 @@ class PolicyIteration:
             action_values = np.zeros(self.env.action_space.n)
             for action in range(self.env.action_space.n):
                 # 환경의 transition 정보로 다음 상태와 보상 확인
-                _, next_state, reward, _ = self.env.P[state][action][0]
+                next_state, reward = self.get_result(state, action)
+
                 action_values[action] = reward + discount_factor * self.get_value(next_state)
 
             # 최대 가치의 action들에 대해 확률 동일하게 할당 (greedy)
@@ -141,6 +135,16 @@ class PolicyIteration:
             self.policy_table[state] = policy
 
         return policy_stable
+    
+    def get_result(self, state, action):
+        _, next_state, reward, _ = self.env.P[state][action][0]
+        row, col, passenger_location, destination = self.env.decode(state)
+        if action == 5 and reward == -1:
+            reward = -10
+            
+        if action == 4 and reward == -1:
+            reward = 10
+        return next_state, reward
         
     def print_value(self, state):
         if self.is_terminated(state):
